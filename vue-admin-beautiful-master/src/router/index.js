@@ -55,23 +55,79 @@ export const asyncRoutes = [
     ],
   },
    {
-    path: "/test",
+    path: "/travelplan",
     component: Layout,
     redirect: "noRedirect",
+    name: 'Travelplan',
+    alwaysShow: true,
+    meta: { title: '旅行规划', icon: "atlas", },
     children: [
       {
-        path: "test",
-        name: "Test",
-        component: () => import("@/views/test/index"),
+        path: "travelplan",
+        name: "Travelplan",
+        component: () => import("@/views/travelplan/index"),
         meta: {
-          title: "test",
-          icon: "marker",
+          title: "出行",
+          permissions: ["admin"],
+        },
+      },
+      {
+        path: "combo",
+        name: "Combo",
+        component: () => import("@/views/travelplan/combo"),
+        meta: {
+          title: "旅游套餐",
+          permissions: ["admin"],
+        },
+      },
+      {
+        path: "search",
+        name: "Search",
+        component: () => import("@/views/travelplan/search"),
+        meta: {
+          title: "地点查询",
+          permissions: ["admin"],
+        },
+      },
+      {
+        path: "accounmodation",
+        name: "Accounmodation",
+        component: () => import("@/views/travelplan/accounmodation"),
+        meta: {
+          title: "酒店/民宿",
           permissions: ["admin"],
         },
       },
     ],
   }, 
-
+  {
+    path:'/traffic',
+    component:Layout,
+    redirect:'noredirect',
+    name:'Traffic',
+    alwaysShow:true,
+    meta:{title:'出行',icon:'traffic-light'},
+    children:[
+      {
+        path:'routeplan',
+        name:'Routeplan',
+        component:()=>import('@/views/traffic/index'),
+        meta:{
+          title:'出行路线规划',
+          permissions:['admin','editor'],
+        }
+      },
+      {
+        path:'weather',
+        name:'Weather',
+        component:()=>import('@/views/traffic/weather'),
+        meta:{
+          title:'出行天气预报',
+          permissions:['admin','editor']
+        }
+      }
+    ]
+  },
   {
     path: '/vab',
     component: Layout,
