@@ -67,7 +67,7 @@ export const asyncRoutes = [
         name: "Travelplan",
         component: () => import("@/views/travelplan/index"),
         meta: {
-          title: "出行",
+          title: "车票/机票",
           permissions: ["admin"],
         },
       },
@@ -125,6 +125,34 @@ export const asyncRoutes = [
           title:'出行天气预报',
           permissions:['admin','editor']
         }
+      }
+    ]
+  },
+  {
+    path:'/guide',
+    component:Layout,
+    redirect:'noredirect',
+    name:'Guide',
+    alwaysShow:true,
+    meta:{title:'旅行攻略',icon:'comment'},
+    children:[
+      {
+        path:'travelguide',
+        name:'Travevlguide',
+        component:()=>import('@/views/guide/index'),
+        meta:{
+          title:'攻略文章',
+          permissions:['admin','editor']
+        },
+      },
+      {
+        path:'history',
+        name:'History',
+        component:()=>import('@/views/guide/history'),
+        meta:{
+          title:'人文历史文章',
+          permissions:['admin','editor']
+        },
       }
     ]
   },
