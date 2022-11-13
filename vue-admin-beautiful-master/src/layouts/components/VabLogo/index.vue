@@ -8,7 +8,8 @@
         :class="{ 'hidden-xs-only': layout === 'horizontal' }"
         :title="title"
       >
-        {{ title }}
+        <!--{{ title }}-->
+        {{"SOAproject"}}
       </span>
     </router-link>
   </div>

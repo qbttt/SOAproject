@@ -15,13 +15,13 @@
           :class="{ 'tag-view-show': tabsBar }"
         >
           <div class="vab-main">
-            <vab-tabs-bar />
+            <!--<vab-tabs-bar />-->
           </div>
         </div>
       </div>
       <div class="vab-main main-padding">
         <!--<vab-ad />-->
-        <vab-app-main />
+        <!--<vab-app-main />-->
       </div>
     </div>
     <div

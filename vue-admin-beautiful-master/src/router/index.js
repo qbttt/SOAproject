@@ -7,6 +7,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Layout from '@/layouts'
 import EmptyLayout from '@/layouts/EmptyLayout'
+import TryLayout from '@/layouts/TryLayout'
 import { publicPath, routerMode } from '@/config'
 
 Vue.use(VueRouter)
@@ -53,7 +54,7 @@ export const asyncRoutes = [
       },
     ],
   },
-  /* {
+   {
     path: "/test",
     component: Layout,
     redirect: "noRedirect",
@@ -69,7 +70,7 @@ export const asyncRoutes = [
         },
       },
     ],
-  }, */
+  }, 
 
   {
     path: '/vab',
@@ -387,6 +388,25 @@ export const asyncRoutes = [
     redirect: '/404',
     hidden: true,
   },
+  {
+    path:'/try',
+    component:TryLayout,
+    redirect:'noredirect',
+    name:'try',
+    meta:{title:'尝试',icon:'bug'},
+    children:[
+      {
+        path:'first',
+        name:'First',
+        component: () => import('@/views/first'),
+        meta: {
+          title: '第一个页面',
+          noKeepAlive: true,
+        },
+        children: null,
+      }
+    ]
+  }
 ]
 
 const router = new VueRouter({
