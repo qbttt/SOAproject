@@ -63,9 +63,9 @@ export const asyncRoutes = [
     meta: { title: '旅行规划', icon: "atlas", },
     children: [
       {
-        path: "travelplan",
-        name: "Travelplan",
-        component: () => import("@/views/travelplan/index"),
+        path: "ticket",
+        name: "Ticket",
+        component: () => import("@/views/travelplan/ticket"),
         meta: {
           title: "车票/机票",
           permissions: ["admin"],
@@ -90,9 +90,9 @@ export const asyncRoutes = [
         },
       },
       {
-        path: "accounmodation",
-        name: "Accounmodation",
-        component: () => import("@/views/travelplan/accounmodation"),
+        path: "accommodation",
+        name: "Accommodation",
+        component: () => import("@/views/travelplan/accommodation"),
         meta: {
           title: "酒店/民宿",
           permissions: ["admin"],
