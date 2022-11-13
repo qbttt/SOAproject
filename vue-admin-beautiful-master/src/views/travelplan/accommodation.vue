@@ -46,7 +46,7 @@
               <div class="accommodation-list-title">{{ item.title }}</div>
               <div class="accommodation-list-description">{{ item.description }}</div>
               <div class="accommodation-list-price">
-                <span>¥ {{ item.price }} 元</span>
+                <span>¥ {{ item.price }} 元起</span>
               </div>
             </div>
           </el-card>
@@ -81,17 +81,17 @@
               isRecommend:true,
               status:0,
               image:require('@/assets/comparison/left.jpg'),
-              title:'上海三日游',
-              description:'在上海玩三天',
-              price:'5000'
+              title:'**酒店',
+              description:'上海市杨浦区四平路1239号',
+              price:'500'
             },
             {
               isRecommend:true,
               status:5,
               image:'',
-              title:'上海三日游',
-              description:'在上海玩三天',
-              price:'4000'
+              title:'**民宿',
+              description:'上海市嘉定区曹安公路4800号',
+              price:'40'
             },
             {
               isRecommend:true,
