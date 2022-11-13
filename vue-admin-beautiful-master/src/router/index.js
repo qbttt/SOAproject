@@ -63,11 +63,11 @@ export const asyncRoutes = [
     meta: { title: '旅行规划', icon: "atlas", },
     children: [
       {
-        path: "travelplan",
-        name: "Travelplan",
-        component: () => import("@/views/travelplan/index"),
+        path: "ticket",
+        name: "Ticket",
+        component: () => import("@/views/travelplan/ticket"),
         meta: {
-          title: "出行",
+          title: "车票/机票",
           permissions: ["admin"],
         },
       },
@@ -90,9 +90,9 @@ export const asyncRoutes = [
         },
       },
       {
-        path: "accounmodation",
-        name: "Accounmodation",
-        component: () => import("@/views/travelplan/accounmodation"),
+        path: "accommodation",
+        name: "Accommodation",
+        component: () => import("@/views/travelplan/accommodation"),
         meta: {
           title: "酒店/民宿",
           permissions: ["admin"],
@@ -125,6 +125,34 @@ export const asyncRoutes = [
           title:'出行天气预报',
           permissions:['admin','editor']
         }
+      }
+    ]
+  },
+  {
+    path:'/guide',
+    component:Layout,
+    redirect:'noredirect',
+    name:'Guide',
+    alwaysShow:true,
+    meta:{title:'旅行攻略',icon:'comment'},
+    children:[
+      {
+        path:'travelguide',
+        name:'Travevlguide',
+        component:()=>import('@/views/guide/index'),
+        meta:{
+          title:'攻略文章',
+          permissions:['admin','editor']
+        },
+      },
+      {
+        path:'history',
+        name:'History',
+        component:()=>import('@/views/guide/history'),
+        meta:{
+          title:'人文历史文章',
+          permissions:['admin','editor']
+        },
       }
     ]
   },

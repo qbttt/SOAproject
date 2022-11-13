@@ -1,5 +1,5 @@
 <template>
-    <div class="travel-plan-container">
+    <div class="accommodation-container">
       <vab-query-form>
         <vab-query-form-right-panel :span="24">
           <el-form
@@ -35,17 +35,17 @@
           :xl="6"
         >
           <el-card :body-style="{ padding: '0px' }" shadow="hover">
-            <div class="combo-list-card-body">
-              <div class="combo-list-tag-group">
+            <div class="accommodation-list-card-body">
+              <div class="accommodation-list-tag-group">
                 <el-tag v-if="item.isRecommend" hit type="success">推荐</el-tag>
-                <el-tag v-if="item.status === 0" hit type="danger">缺货</el-tag>
+                <el-tag v-if="item.status === 0" hit type="danger">订满</el-tag>
               </div>
-              <div class="combo-list-image-group">
-                <img :src="item.image" class="combo-list-image" />
+              <div class="accommodation-list-image-group">
+                <img :src="item.image" class="accommodation-list-image" />
               </div>
-              <div class="combo-list-title">{{ item.title }}</div>
-              <div class="combo-list-description">{{ item.description }}</div>
-              <div class="combo-list-price">
+              <div class="accommodation-list-title">{{ item.title }}</div>
+              <div class="accommodation-list-description">{{ item.description }}</div>
+              <div class="accommodation-list-price">
                 <span>¥ {{ item.price }} 元</span>
               </div>
             </div>
@@ -67,7 +67,7 @@
   <script>
   
     export default {
-      name: 'TravelPlan',
+      name: 'Accommodation',
       components: {},
       data() {
         return {
@@ -138,24 +138,24 @@
     }
   </script>
   <style lang="scss" scoped>
-    .travel-plan-container {
-      .combo-list-card-body {
+    .accommodation-container {
+      .accommodation-list-card-body {
         position: relative;
         text-align: center;
         cursor: pointer;
   
-        .combo-list-tag-group {
+        .accommodation-list-tag-group {
           position: absolute;
           top: 10px;
           right: 5px;
           z-index: 9;
         }
   
-        .combo-list-image-group {
+        .accommodation-list-image-group {
           height: 400px;
           overflow: hidden;
   
-          .combo-list-image {
+          .accommodation-list-image {
             width: 100%;
             height: 400px;
             transition: all ease-in-out 0.3s;
@@ -166,18 +166,18 @@
           }
         }
   
-        .combo-list-title {
+        .accommodation-list-title {
           margin: 8px 0;
           font-size: 16px;
           font-weight: bold;
         }
   
-        .combo-list-description {
+        .accommodation-list-description {
           font-size: 14px;
           color: #808695;
         }
   
-        .combo-list-price {
+        .accommodation-list-price {
           margin: 8px 0;
           font-size: 14px;
           color: $base-color-orange;
