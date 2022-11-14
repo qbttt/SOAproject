@@ -8,9 +8,23 @@
               :props="{ expandTrigger: 'hover' }"
               @change="handleChange"></el-cascader>
         </div>
-        <div class="map-container">
-            <div id="map" class="container"></div>
+        <div class="search-main-container">
+            <el-card shadow="always" class="map-card" :body-style="{padding:'0px'}">
+            <div class="map-container">
+                <div id="map" class="container"></div>
+            </div>
+            </el-card>
+            <el-card shadow="always" class="landscape">
+            <div slot="header" class="clearfix">
+                <span>名胜古迹</span>
+            </div>
+            <div v-for="o in 4" :key="o" class="text item">
+                {{'列表内容 ' + o }}
+            </div>
+            </el-card>
         </div>
+        
+        
     </div>
 
   </template>
@@ -323,19 +337,49 @@
   .search-container{
     .block{
         display: flex;
-        justify-content: center;
+        justify-content: left;
         align-items: center;
         margin-bottom: 10px;
         .demonstration{
             margin:5px;
         }
     }
-    .map-container {
-      .container {
-        width: 100%;
-        height: calc(100vh - 214px);
-      }
+    .search-main-container{
+        display: flex;
+        justify-content: space-around;
+        .map-card{
+        width:45%;
+          .map-container {
+            .container {
+              width: 100%;
+              height: calc(100vh - 214px);
+            }  
+           }
+        }
+
+    .text {
+    font-size: 14px;
+  }
+
+  .item {
+    margin-bottom: 18px;
+  }
+
+  .clearfix:before,
+  .clearfix:after {
+    display: table;
+    content: "";
+  }
+  .clearfix:after {
+    clear: both
+  }
+
+  .landscape {
+    width: 45%;
+  }
     }
+    
+    
   }
   </style>
   

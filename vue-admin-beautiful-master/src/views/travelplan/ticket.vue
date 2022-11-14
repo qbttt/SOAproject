@@ -23,17 +23,17 @@
     <el-table-column
       prop="date"
       label="日期"
-      width="160">
+      width="120">
     </el-table-column>
     <el-table-column
       prop="depart_time"
       label="出发时间"
-      width="160">
+      width="120">
     </el-table-column>
     <el-table-column
       prop="arrive_time"
       label="到达时间"
-      width="160">
+      width="120">
     </el-table-column>
     <el-table-column
       prop="departure"
@@ -45,12 +45,20 @@
     </el-table-column>
     <el-table-column
       prop="price"
-      label="价格">
+      label="价格"
+      sortable
+      show-overflow-tooltip>
     </el-table-column>
     <el-table-column
       prop="company"
       label="航空公司">
     </el-table-column>
+    <el-table-column
+        show-overflow-tooltip
+        label="余票"
+        prop="left"
+        sortable
+      ></el-table-column>
     <el-table-column
       fixed="right"
       label="操作"
@@ -79,8 +87,27 @@
           arrive_time:'10:20',
           departure: '虹桥T2',
           arrival:'浦东T1',
-          price:'300',
-          company:'东航'
+          price:'320',
+          company:'东航',
+          left:10,
+        }, {
+          date: '2016-05-02',
+          depart_time: '07:55',
+          arrive_time:'10:20',
+          departure: '虹桥T2',
+          arrival:'浦东T1',
+          price:'200',
+          company:'东航',
+          left:10,
+        }, {
+          date: '2016-05-02',
+          depart_time: '07:55',
+          arrive_time:'10:20',
+          departure: '虹桥T2',
+          arrival:'浦东T1',
+          price:'400',
+          company:'东航',
+          left:10,
         }, {
           date: '2016-05-02',
           depart_time: '07:55',
@@ -88,23 +115,8 @@
           departure: '虹桥T2',
           arrival:'浦东T1',
           price:'300',
-          company:'东航'
-        }, {
-          date: '2016-05-02',
-          depart_time: '07:55',
-          arrive_time:'10:20',
-          departure: '虹桥T2',
-          arrival:'浦东T1',
-          price:'300',
-          company:'东航'
-        }, {
-          date: '2016-05-02',
-          depart_time: '07:55',
-          arrive_time:'10:20',
-          departure: '虹桥T2',
-          arrival:'浦东T1',
-          price:'300',
-          company:'东航'
+          company:'东航',
+          left:0,
         }],
         depart:[],
         arrive:[],
