@@ -111,7 +111,7 @@ export const asyncRoutes = [
       {
         path:'routeplan',
         name:'Routeplan',
-        component:()=>import('@/views/traffic/index'),
+        component:()=>import('@/views/traffic/routeplan'),
         meta:{
           title:'出行路线规划',
           permissions:['admin','editor'],
