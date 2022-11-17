@@ -3,12 +3,15 @@
         <el-row :gutter="20">
             <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
                 <div class="block">
-                    <span class="demonstration">请选择目的地所在城市</span>
+                    <span class="demonstration">请选择城市</span>
                     <el-cascader
                       v-model="value"
                       :options="options"
                       :props="{ expandTrigger: 'hover' }"
                       @change="handleChange"></el-cascader>
+                      <el-input v-model="input" placeholder="请输入地点" prefix-icon="el-icon-search" clearable>
+                        <el-button icon="el-icon-search"  type="small" slot="append"></el-button>
+                      </el-input>
                 </div>
             </el-col>
             <el-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12">
@@ -55,8 +58,9 @@
                         <el-button @click="choice=1">美食</el-button>
                     </div>
                     <div class="card-body">   
-                        <el-row  :gutter="10">
-                            <el-col :span="8" v-for="item in list" :offset="index > 0 ? 2 : 0">
+                        <el-row :gutter="10" >
+                           
+                                <el-col :span="8" v-for="item in list" :key="index" :offset="index > 0 ? 2 : 0">
                                 <guidence
                                   :image="item.picture"
                                   :title="item.title"
@@ -64,6 +68,7 @@
                                   :comments="item.comments">
                             </guidence>
                             </el-col>
+                          
                         </el-row>
                     </div>
                 </el-card>
@@ -82,6 +87,7 @@ export default{
     },
     data(){
         return {
+            input:'',
             choice:0,
             value:[],
             options: [{

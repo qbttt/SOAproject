@@ -5,7 +5,7 @@
       :icon="['fas', 'palette']"
       @click="handleOpenThemeBar"
     />
-    <div class="theme-bar-setting">
+    <!--<div class="theme-bar-setting">
       <div @click="handleOpenThemeBar">
         <vab-icon :icon="['fas', 'palette']" />
         <p>主题配置(删)</p>
@@ -14,7 +14,7 @@
         <vab-icon :icon="['fas', 'laptop-code']"></vab-icon>
         <p>拷贝源码(删)</p>
       </div>
-    </div>
+    </div>-->
 
     <el-drawer
       title="主题配置"
