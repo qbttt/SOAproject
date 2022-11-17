@@ -18,9 +18,9 @@ const setting = {
       ? 'vab-mock-server'
       : 'vab-mock-server',
   //标题 （包括初次加载雪花屏的标题 页面的标题 浏览器的标题）
-  title: 'vue-admin-beautiful',
+  title: 'SOAproject',
   //简写
-  abbreviation: 'vab',
+  abbreviation: 'soa',
   //开发环境端口号
   devPort: '80',
   //版本号
