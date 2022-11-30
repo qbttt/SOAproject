@@ -174,55 +174,6 @@ export const asyncRoutes = [
         },
       },
       {
-        path: 'icon',
-        component: EmptyLayout,
-        redirect: 'noRedirect',
-        name: 'Icon',
-        meta: {
-          title: '图标',
-          permissions: ['admin'],
-        },
-        children: [
-          {
-            path: 'awesomeIcon',
-            name: 'AwesomeIcon',
-            component: () => import('@/views/vab/icon/index'),
-            meta: { title: '常规图标' },
-          },
-          {
-            path: 'remixIcon',
-            name: 'RemixIcon',
-            component: () => import('@/views/vab/icon/remixIcon'),
-            meta: { title: '小清新图标' },
-          },
-          {
-            path: 'colorfulIcon',
-            name: 'ColorfulIcon',
-            component: () => import('@/views/vab/icon/colorfulIcon'),
-            meta: { title: '多彩图标' },
-          },
-        ],
-      },
-      {
-        path: 'table',
-        component: () => import('@/views/vab/table/index'),
-        name: 'Table',
-        meta: {
-          title: '表格',
-          permissions: ['admin'],
-        },
-      },
-      {
-        path: 'map',
-        component: () => import('@/views/vab/map/index'),
-        name: 'Map',
-        meta: {
-          title: '地图',
-          permissions: ['admin'],
-        },
-      },
-
-      {
         path: 'webSocket',
         name: 'WebSocket',
         component: () => import('@/views/vab/webSocket/index'),
@@ -235,63 +186,16 @@ export const asyncRoutes = [
         meta: { title: '表单', permissions: ['admin'] },
       },
       {
-        path: 'element',
-        name: 'Element',
-        component: () => import('@/views/vab/element/index'),
-        meta: { title: '常用组件', permissions: ['admin'] },
-      },
-      {
         path: 'tree',
         name: 'Tree',
         component: () => import('@/views/vab/tree/index'),
         meta: { title: '树', permissions: ['admin'] },
       },
       {
-        path: 'card',
-        name: 'Card',
-        component: () => import('@/views/vab/card/index'),
-        meta: { title: '卡片', permissions: ['admin'] },
-      },
-      {
         path: 'verify',
         name: 'Verify',
         component: () => import('@/views/vab/verify/index'),
         meta: { title: '验证码', permissions: ['admin'] },
-      },
-      {
-        path: 'menu1',
-        component: () => import('@/views/vab/nested/menu1/index'),
-        name: 'Menu1',
-        alwaysShow: true,
-        meta: {
-          title: '嵌套路由 1',
-          permissions: ['admin'],
-        },
-        children: [
-          {
-            path: 'menu1-1',
-            name: 'Menu1-1',
-            alwaysShow: true,
-            meta: { title: '嵌套路由 1-1' },
-            component: () => import('@/views/vab/nested/menu1/menu1-1/index'),
-
-            children: [
-              {
-                path: 'menu1-1-1',
-                name: 'Menu1-1-1',
-                meta: { title: '嵌套路由 1-1-1' },
-                component: () =>
-                  import('@/views/vab/nested/menu1/menu1-1/menu1-1-1/index'),
-              },
-            ],
-          },
-        ],
-      },
-      {
-        path: 'magnifier',
-        name: 'Magnifier',
-        component: () => import('@/views/vab/magnifier/index'),
-        meta: { title: '放大镜', permissions: ['admin'] },
       },
       {
         path: 'echarts',
@@ -305,18 +209,6 @@ export const asyncRoutes = [
         name: 'Loading',
         component: () => import('@/views/vab/loading/index'),
         meta: { title: 'loading', permissions: ['admin'] },
-      },
-      {
-        path: 'player',
-        name: 'Player',
-        component: () => import('@/views/vab/player/index'),
-        meta: { title: '视频播放器', permissions: ['admin'] },
-      },
-      {
-        path: 'markdownEditor',
-        name: 'MarkdownEditor',
-        component: () => import('@/views/vab/markdownEditor/index'),
-        meta: { title: 'markdown编辑器', permissions: ['admin'] },
       },
       {
         path: 'editor',
@@ -339,12 +231,6 @@ export const asyncRoutes = [
         name: 'Lodash',
         component: () => import('@/views/vab/lodash/index'),
         meta: { title: 'lodash', permissions: ['admin'] },
-      },
-      {
-        path: 'imgComparison',
-        name: 'ImgComparison',
-        component: () => import('@/views/vab/imgComparison/index'),
-        meta: { title: '图像拖拽比对', permissions: ['admin'] },
       },
       {
         path: 'smallComponents',
@@ -415,38 +301,6 @@ export const asyncRoutes = [
     ],
   },
   {
-    path: '/mall',
-    component: Layout,
-    redirect: 'noRedirect',
-    name: 'Mall',
-    meta: {
-      title: '商城',
-      icon: 'shopping-cart',
-      permissions: ['admin'],
-    },
-
-    children: [
-      {
-        path: 'pay',
-        name: 'Pay',
-        component: () => import('@/views/mall/pay/index'),
-        meta: {
-          title: '支付',
-          noKeepAlive: true,
-        },
-        children: null,
-      },
-      {
-        path: 'goodsList',
-        name: 'GoodsList',
-        component: () => import('@/views/mall/goodsList/index'),
-        meta: {
-          title: '商品列表',
-        },
-      },
-    ],
-  },
-  {
     path: '/error',
     component: EmptyLayout,
     redirect: 'noRedirect',
@@ -471,25 +325,6 @@ export const asyncRoutes = [
     path: '*',
     redirect: '/404',
     hidden: true,
-  },
-  {
-    path:'/try',
-    component:TryLayout,
-    redirect:'noredirect',
-    name:'try',
-    meta:{title:'尝试',icon:'bug'},
-    children:[
-      {
-        path:'first',
-        name:'First',
-        component: () => import('@/views/first'),
-        meta: {
-          title: '第一个页面',
-          noKeepAlive: true,
-        },
-        children: null,
-      }
-    ]
   }
 ]
 
