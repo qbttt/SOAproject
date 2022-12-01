@@ -83,6 +83,7 @@
 
 <script>
 import { getCitylist } from '../../api/citylist';
+import {getWeather} from '../../api/weather';
   export default {
     methods: {
       handleClick(){
@@ -210,6 +211,14 @@ import { getCitylist } from '../../api/citylist';
       }).catch((err) => {
           console.log(err);
         });
+      getWeather().then((r)=>{
+        if(r.error_code===0){
+          console.log(r.result)
+        }
+      }).catch((err) => {
+          console.log(err);
+        });
+      
     }
   }
 </script>
