@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App'
 import store from './store'
 import router from './router'
+import axios from 'axios'
 import './plugins'
 import '@/layouts/export'
 /**
@@ -13,7 +14,7 @@ if (process.env.NODE_ENV === 'production') {
   const { mockXHR } = require('@/utils/static')
   mockXHR()
 }
-
+Vue.prototype.$http = axios;
 Vue.config.productionTip = false
 
 new Vue({

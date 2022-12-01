@@ -56,6 +56,21 @@ module.exports = {
       errors: true,
     },
     after: mockServer(),
+    proxy:{
+      '/city':{
+        target:'https://www.mxnzp.com/api/address/',
+        //ws:true,
+        changeOrigin:true,
+        secure:true,
+        pathRewrite:{
+          '^/city':''
+        },
+        headers:{
+          "app_id":"s030nllezpgsnstr",
+          "app_secret":"Vi9MTFUzbjNZWE9Md3FReWVqYXZpQT09"
+        }
+      }
+    }
   },
   configureWebpack() {
     return {

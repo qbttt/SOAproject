@@ -2,18 +2,24 @@
   <div class="table-container">
     <div class="select-container">
       <div class="block">
-            <span class="demonstration">请选择出发地</span>
-            <el-cascader
-              v-model="depart"
-              :options="options"
-              :props="{ expandTrigger: 'hover' }"
-              @change="handleChange"></el-cascader>
-            <span class="demonstration">请选择目的地</span>
-            <el-cascader
-              v-model="arrive"
-              :options="options"
-              :props="{ expandTrigger: 'hover' }"
-              @change="handleChange"></el-cascader>
+        <span class="demonstration">请选择交通工具</span>
+        <el-cascader
+          v-model="vehicle"
+          :options="vehicleOption"
+          :props="{expandTrigger:'hover'}"
+          @change="handleChange"></el-cascader>
+        <span class="demonstration">请选择出发地</span>
+        <el-cascader
+          v-model="depart"
+          :options="options"
+          :props="{ expandTrigger: 'hover' }"
+          @change="handleChange"></el-cascader>
+        <span class="demonstration">请选择目的地</span>
+        <el-cascader
+          v-model="arrive"
+          :options="options"
+          :props="{ expandTrigger: 'hover' }"
+          @change="handleChange"></el-cascader>
       </div>
     </div>
     <el-table
@@ -69,18 +75,23 @@
       </template>
     </el-table-column>
   </el-table>
+  <div>
+    <span></span>
+  </div>
   </div>
 </template>
 
 <script>
+import { getCitylist } from '../../api/citylist';
   export default {
     methods: {
       handleClick(){
-        
+        console.log("yes")
       }
     },
     data() {
       return {
+
         tableData: [{
           date: '2016-05-02',
           depart_time: '07:55',
@@ -120,6 +131,19 @@
         }],
         depart:[],
         arrive:[],
+        vehicle:[],
+        vehicleOption:[
+          {
+            value:'train',
+            label:'火车'
+          },
+          {
+            value:'plane',
+            label:'飞机'
+          }
+        ],
+        //d:[],
+        //code,name,pchild
         options: [{
           value: 'destination',
           label: '江苏',
@@ -176,6 +200,16 @@
           }]
         }]
       }
+    },
+    created(){
+      getCitylist().then((r)=>{
+        if(r.code===1){
+          console.log(r.data);
+        }
+
+      }).catch((err) => {
+          console.log(err);
+        });
     }
   }
 </script>
