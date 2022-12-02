@@ -79,6 +79,14 @@ module.exports = {
         headers:{
           "Content-Type":"application/x-www-form-urlencoded"
         }
+      },
+      '/train':{
+        target:"https://huoche.tuniu.com/yii.php/",
+        changeOrigin:true,
+        secure:true,
+        pathRewrite:{
+          '^/train':''
+        }
       }
     }
   },
