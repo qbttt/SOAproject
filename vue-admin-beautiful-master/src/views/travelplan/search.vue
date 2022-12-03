@@ -25,7 +25,45 @@
               <el-card shadow="always" class="landscape">
                 <div slot="header" class="clearfix" >
                   <i class="el-icon-camera"></i>
-                  <span> 发现好去处</span>
+                  <span>发现好去处</span>
+                </div>
+                <div class="recommend">
+                  <div  v-for="item in recommendation">
+                  <Site 
+                    :title="item.name"
+                    :image="item.pic"
+                    :comment="item.comment"
+                    :location="item.location"
+                    />
+                </div>
+                </div>
+                
+              </el-card>
+            </el-col>
+            <el-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12">
+              <el-card shadow="always" class="landscape">
+                <div slot="header" class="clearfix" >
+                  <i class="el-icon-camera"></i>
+                  <span> 旅游资讯</span>
+                </div>
+                <div class="recommend">
+                  <div  v-for="item in recommendation">
+                  <Site 
+                    :title="item.name"
+                    :image="item.pic"
+                    :comment="item.comment"
+                    :location="item.location"
+                    />
+                </div>
+                </div>
+                
+              </el-card>
+            </el-col>
+            <el-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12">
+              <el-card shadow="always" class="landscape">
+                <div slot="header" class="clearfix" >
+                  <i class="el-icon-camera"></i>
+                  <span>景点介绍</span>
                 </div>
                 <div class="recommend">
                   <div  v-for="item in recommendation">

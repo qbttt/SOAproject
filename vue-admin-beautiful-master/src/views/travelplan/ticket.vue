@@ -279,13 +279,6 @@ import {getTrain} from '../../api/ticket';
       }).catch((err) => {
           console.log(err);
         });*/
-      /*getTrain("上海","北京","2022-12-03").then((r)=>{
-        if(r.code===200){
-          console.log(r.data.list)
-        }
-      }).catch((err) => {
-          console.log(err);
-        });*/
       
     }
   }
