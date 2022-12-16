@@ -74,11 +74,6 @@
       label="航班">
     </el-table-column>
     <el-table-column
-      v-if="vehicle=='plane'"
-      prop="company"
-      label="航空公司">
-    </el-table-column>
-    <el-table-column
       v-if="vehicle=='train'"
       prop="trainNum"
       label="车次">
@@ -94,8 +89,7 @@
       label="操作"
       width="100">
       <template slot-scope="scope">
-        <el-button @click="handleClick" type="text" size="small">查看</el-button>
-        <el-button @click="handleClick" type="text" size="small">订票</el-button>
+        <a :href="'https://www.12306.cn/index/'">订票</a>
       </template>
     </el-table-column>
   </el-table>
@@ -170,44 +164,6 @@ import {getTrain} from '../../api/ticket';
     },
     data() {
       return {
-
-        /*tableData: [{
-          date: '2016-05-02',
-          depart_time: '07:55',
-          arrive_time:'10:20',
-          departure: '虹桥T2',
-          arrival:'浦东T1',
-          price:'320',
-          company:'东航',
-          left:10,
-        }, {
-          date: '2016-05-02',
-          depart_time: '07:55',
-          arrive_time:'10:20',
-          departure: '虹桥T2',
-          arrival:'浦东T1',
-          price:'200',
-          company:'东航',
-          left:10,
-        }, {
-          date: '2016-05-02',
-          depart_time: '07:55',
-          arrive_time:'10:20',
-          departure: '虹桥T2',
-          arrival:'浦东T1',
-          price:'400',
-          company:'东航',
-          left:10,
-        }, {
-          date: '2016-05-02',
-          depart_time: '07:55',
-          arrive_time:'10:20',
-          departure: '虹桥T2',
-          arrival:'浦东T1',
-          price:'300',
-          company:'东航',
-          left:0,
-        }],*/
         tableData:[],
         date:'',
         pickerOptions: {
@@ -235,10 +191,6 @@ import {getTrain} from '../../api/ticket';
           {
             value:'train',
             label:'火车'
-          },
-          {
-            value:'plane',
-            label:'飞机'
           }
         ],
         options:[],
