@@ -97,7 +97,7 @@ export default {
                     this.tableData.push({ date: "今天", info: info, temperature: temperature, humidity: humidity, direct: direct, power: power, aqi: aqi })
 
                     var date1, temperature1, weather1, direct1;
-                    for (var i = 0; i < r.result.future.length - 1; i++) {
+                    for (var i = 0; i < r.result.future.length; i++) {
                         date1 = r.result.future[i].date;
                         temperature1 = r.result.future[i].temperature;
                         weather1 = r.result.future[i].weather;
