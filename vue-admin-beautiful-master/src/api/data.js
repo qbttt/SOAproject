@@ -1,7 +1,7 @@
-import request from '@/utils/request'
+import service from '@/utils/myrequest'
 
 export function getCombo(data){
-    return request({
+    return service({
         url:'/combo',
         method:'GET',
         params:{
@@ -10,7 +10,7 @@ export function getCombo(data){
     })
 }
 export function getRecommend(city,num,data){
-    return request({
+    return service({
         url:'/recommend',
         method:'GET',
         params:{
@@ -21,7 +21,7 @@ export function getRecommend(city,num,data){
     })
 }
 export function getAccomodation(city,distri,d,data){
-    return request({
+    return service({
         url:'/accomodation',
         method:'GET',
         params:{
@@ -33,13 +33,13 @@ export function getAccomodation(city,distri,d,data){
     })
 }
 export function getCategory(){
-    return request({
+    return service({
         url:'/guide/category',
         method:'GET',
     })
 }
 export function getGuide(city,distri,c,number,data){
-    return request({
+    return service({
         url:'/guide',
         method:'GET',
         params:{
@@ -52,7 +52,7 @@ export function getGuide(city,distri,c,number,data){
     })
 }
 export function getLikes(data){
-    return request({
+    return service({
         url:'/user/userimg',
         method:'GET',
         params:{

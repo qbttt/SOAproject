@@ -87,6 +87,22 @@ module.exports = {
         pathRewrite:{
           '^/train':''
         }
+      },
+      '/news':{
+        target:"https://apis.tianapi.com/travel/",
+        changeOrigin:true,
+        secure:true,
+        pathRewrite:{
+          '^/news':''
+        }
+      },
+      '/request':{
+        target:"",
+        changeOrigin:true,
+        secure:true,
+        pathRewrite:{
+          '^/request':''
+        }
       }
     }
   },

@@ -141,7 +141,7 @@
           ],
           activeName:'first',
           input:'',
-          value: [],
+          city: [],
           options: [],
           recommendation:[]
           }
@@ -267,7 +267,7 @@
           console.log(tab,event)
         },
         recommend(){
-          getRecommend(city,10,input).then((r)=>{
+          getRecommend(this.city,10,input).then((r)=>{
             if(r.code===200){
               var rname,addr,summary,picture;
               for(var i=0;i<r.data.count;i++){
@@ -283,7 +283,7 @@
           });
         },
         search(){
-          recommend()
+          this.recommend()
 
         }
        
