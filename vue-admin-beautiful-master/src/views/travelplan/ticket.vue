@@ -101,7 +101,6 @@
 
 <script>
 import { getCitylist } from '../../api/citylist';
-import {getWeather} from '../../api/weather';
 import {getTrain} from '../../api/ticket';
   export default {
     methods: {
@@ -115,7 +114,6 @@ import {getTrain} from '../../api/ticket';
 
       },
       updateTrain(){
-        //console.log(this.depart);
         var de='';
         if(this.depart[1]=="市辖区"){
           de=this.depart[0];
@@ -203,9 +201,9 @@ import {getTrain} from '../../api/ticket';
           var tmp=[];
           var name,code;
           var cnt=0;
-          for(var i=r.data.length-1;i>=0;i--){
+          for(var i=0;i<r.data.length;i++){
             //console.log(r.data[i].name);
-            for(var j=r.data[i].pchilds.length-1;j>=0;j--){
+            for(var j=0;j<r.data[i].pchilds.length;j++){
               //console.log(r.data[i].pchilds[j].name);
               name=r.data[i].pchilds[j].name;
               code=r.data[i].pchilds[j].code;
@@ -224,13 +222,6 @@ import {getTrain} from '../../api/ticket';
       }).catch((err) => {
           console.log(err);
         });
-      /*getWeather().then((r)=>{
-        if(r.error_code===0){
-          console.log(r.result)
-        }
-      }).catch((err) => {
-          console.log(err);
-        });*/
       
     }
   }

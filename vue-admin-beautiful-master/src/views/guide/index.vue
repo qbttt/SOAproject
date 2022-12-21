@@ -5,12 +5,12 @@
                 <div class="block">
                     <span class="demonstration">请选择城市</span>
                     <el-cascader
-                      v-model="value"
+                      v-model="city"
                       :options="options"
                       :props="{ expandTrigger: 'hover' }"
                       @change="handleChange"></el-cascader>
                       <el-input v-model="input" placeholder="请输入地点" prefix-icon="el-icon-search" clearable>
-                        <el-button icon="el-icon-search"  type="small" slot="append"></el-button>
+                        <el-button icon="el-icon-search"  type="small" slot="append" @click=""></el-button>
                       </el-input>
                 </div>
             </el-col>
@@ -80,6 +80,7 @@
 <script>
 import VabChart from '@/plugins/echarts'
 import guidence from '@/components/guidence'
+import { getCitylist } from '../../api/citylist'
 export default{
     components:{
         VabChart,
@@ -89,62 +90,8 @@ export default{
         return {
             input:'',
             choice:0,
-            value:[],
-            options: [{
-          value: 'destination',
-          label: '江苏',
-          children: [{
-            value: 'shejiyuanze',
-            label: '南京',
-          }, {
-            value: 'daohang',
-            label: '苏州',
-          },{
-            value: 'daohang',
-            label: '无锡',
-          },{
-            value: 'daohang',
-            label: '常州',
-          },{
-            value: 'daohang',
-            label: '徐州',
-          },{
-            value: 'daohang',
-            label: '南通',
-          }]
-        }, {
-          value: 'zujian',
-          label: '河北',
-          children: [{
-            value: 'basic',
-            label: '石家庄',
-          }, {
-            value: 'form',
-            label: '保定',
-          }, {
-            value: 'data',
-            label: '张家口',
-          }, {
-            value: 'notice',
-            label: '秦皇岛',
-          }, {
-            value: 'navigation',
-            label: '邯郸',
-          }]
-        }, {
-          value: 'ziyuan',
-          label: '浙江',
-          children: [{
-            value: 'axure',
-            label: '杭州'
-          }, {
-            value: 'sketch',
-            label: '宁波'
-          }, {
-            value: 'jiaohu',
-            label: '温州'
-          }]
-        }],
+            city:[],
+            options: [],
             cityname:'上海',
             cy: {
               grid: {
@@ -337,6 +284,30 @@ export default{
         this.$baseMessage(`点击了${e.name},这里可以写跳转`)
       },
       handleZrClick(e) {},
+    },
+    created(){
+      getCitylist().then((r)=>{
+        if(r.code===1){
+          var tmp=[];
+          var name,code;
+          var cnt=0;
+          for(var i=0;i<r.data.length;i++){
+            for(var j=0;j<r.data[i].pchilds.length;j++){
+              name=r.data[i].pchilds[j].name;
+              code=r.data[i].pchilds[j].code;
+              tmp.push({value:name,label:name});
+            }
+            name=r.data[i].name;
+            code=r.data[i].code;
+            this.options.push({value:name,label:name});
+            this.options[cnt].children=tmp;
+            cnt++;
+            tmp=[];
+          }
+        }
+      }).catch((err) => {
+          console.log(err);
+        });
     }
 }
 </script>

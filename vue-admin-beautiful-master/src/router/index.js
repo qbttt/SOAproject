@@ -67,7 +67,7 @@ export const asyncRoutes = [
         name: "Ticket",
         component: () => import("@/views/travelplan/ticket"),
         meta: {
-          title: "车票/机票",
+          title: "车票",
           permissions: ["admin"],
         },
       },
@@ -144,162 +144,10 @@ export const asyncRoutes = [
           title:'攻略文章',
           permissions:['admin','editor']
         },
-      },
-      {
-        path:'history',
-        name:'History',
-        component:()=>import('@/views/guide/history'),
-        meta:{
-          title:'人文历史文章',
-          permissions:['admin','editor']
-        },
       }
     ]
   },
-  {
-    path: '/vab',
-    component: Layout,
-    redirect: 'noRedirect',
-    name: 'Vab',
-    alwaysShow: true,
-    meta: { title: '组件', icon: 'box-open' },
-    children: [
-      {
-        path: 'permissions',
-        name: 'Permission',
-        component: () => import('@/views/vab/permissions/index'),
-        meta: {
-          title: '角色权限',
-          permissions: ['admin', 'editor'],
-        },
-      },
-      {
-        path: 'webSocket',
-        name: 'WebSocket',
-        component: () => import('@/views/vab/webSocket/index'),
-        meta: { title: 'webSocket', permissions: ['admin'] },
-      },
-      {
-        path: 'form',
-        name: 'Form',
-        component: () => import('@/views/vab/form/index'),
-        meta: { title: '表单', permissions: ['admin'] },
-      },
-      {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/vab/tree/index'),
-        meta: { title: '树', permissions: ['admin'] },
-      },
-      {
-        path: 'verify',
-        name: 'Verify',
-        component: () => import('@/views/vab/verify/index'),
-        meta: { title: '验证码', permissions: ['admin'] },
-      },
-      {
-        path: 'echarts',
-        name: 'Echarts',
-        component: () => import('@/views/vab/echarts/index'),
-        meta: { title: '图表', permissions: ['admin'] },
-      },
-
-      {
-        path: 'loading',
-        name: 'Loading',
-        component: () => import('@/views/vab/loading/index'),
-        meta: { title: 'loading', permissions: ['admin'] },
-      },
-      {
-        path: 'editor',
-        name: 'Editor',
-        component: () => import('@/views/vab/editor/index'),
-        meta: {
-          title: '富文本编辑器',
-          permissions: ['admin'],
-          badge: 'New',
-        },
-      },
-      {
-        path: 'backToTop',
-        name: 'BackToTop',
-        component: () => import('@/views/vab/backToTop/index'),
-        meta: { title: '返回顶部', permissions: ['admin'] },
-      },
-      {
-        path: 'lodash',
-        name: 'Lodash',
-        component: () => import('@/views/vab/lodash/index'),
-        meta: { title: 'lodash', permissions: ['admin'] },
-      },
-      {
-        path: 'smallComponents',
-        name: 'SmallComponents',
-        component: () => import('@/views/vab/smallComponents/index'),
-        meta: { title: '小组件', permissions: ['admin'] },
-      },
-
-      {
-        path: 'upload',
-        name: 'Upload',
-        component: () => import('@/views/vab/upload/index'),
-        meta: { title: '上传', permissions: ['admin'] },
-      },
-      {
-        path: 'log',
-        name: 'Log',
-        component: () => import('@/views/vab/errorLog/index'),
-        meta: { title: '错误日志模拟', permissions: ['admin'] },
-      },
-      {
-        path:
-          'https://github.com/chuzhixin/vue-admin-beautiful?utm_source=gold_browser_extension',
-        name: 'ExternalLink',
-        meta: {
-          title: '外链',
-          target: '_blank',
-          permissions: ['admin', 'editor'],
-          badge: 'New',
-        },
-      },
-      {
-        path: 'more',
-        name: 'More',
-        component: () => import('@/views/vab/more/index'),
-        meta: { title: '关于', permissions: ['admin'] },
-      },
-    ],
-  },
-  {
-    path: '/personnelManagement',
-    component: Layout,
-    redirect: 'noRedirect',
-    name: 'PersonnelManagement',
-    meta: { title: '配置', icon: 'users-cog', permissions: ['admin'] },
-    children: [
-      {
-        path: 'userManagement',
-        name: 'UserManagement',
-        component: () =>
-          import('@/views/personnelManagement/userManagement/index'),
-        meta: { title: '用户管理' },
-      },
-      {
-        path: 'roleManagement',
-        name: 'RoleManagement',
-        component: () =>
-          import('@/views/personnelManagement/roleManagement/index'),
-        meta: { title: '角色管理' },
-      },
-      {
-        path: 'menuManagement',
-        name: 'MenuManagement',
-        component: () =>
-          import('@/views/personnelManagement/menuManagement/index'),
-        meta: { title: '菜单管理', badge: 'New' },
-      },
-    ],
-  },
+ 
   {
     path: '/error',
     component: EmptyLayout,
