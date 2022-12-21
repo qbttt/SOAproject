@@ -21,7 +21,7 @@
                   <span>旅游资讯</span>
                 </div>
                 <div class="recommend">
-                  <div  v-for="item in recommendation">
+                  <div  v-for="item in travelNews">
                   <Site 
                     :title="item.name"
                     :image="item.pic"
@@ -98,6 +98,7 @@
     import Site from '@/components/site.vue'
     import { getCitylist } from '../../api/citylist'
     import {getRecommend}from '../../api/data'
+    import {getNews} from '../../api/news'
     export default {
       name: 'Search',
       components: {
@@ -143,7 +144,8 @@
           input:'',
           city: [],
           options: [],
-          recommendation:[]
+          recommendation:[],
+          travelNews:[]
           }
       },
       created() {
@@ -282,9 +284,28 @@
           console.log(err);
           });
         },
+        news(){
+          console.log("当前输入")
+          console.log(this.input)
+          getNews(10,this.input).then((r)=>{
+            if(r.code===200){
+              console.log(r.result.allnum)
+              var title,description,time,picture;
+              for(var i=0;i<r.result.allnum;i++){
+                title=r.result.list[i].title;
+                description=r.result.list[i].description;
+                time=r.result.list[i].ctime;
+                picture=r.result.list[i].picUrl;
+                this.travelNews.push({name:title,pic:picture,comment:description,location:time})
+              }
+            }
+          }).catch((err) => {
+          console.log(err);
+          });
+        },
         search(){
-          this.recommend()
-
+          this.news();
+          //this.recommend()
         }
        
       },

@@ -96,14 +96,14 @@ module.exports = {
           '^/news':''
         }
       },
-      '/request':{
+      /*'/request':{
         target:"",
         changeOrigin:true,
         secure:true,
         pathRewrite:{
           '^/request':''
         }
-      }
+      }*/
     }
   },
   configureWebpack() {
