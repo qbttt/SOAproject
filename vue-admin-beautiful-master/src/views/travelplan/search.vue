@@ -60,8 +60,7 @@
                     <div class="ticket" v-for="item in ticket">
                       <div class="ticket-left">
                         <div style="font-size:medium; margin-bottom: 5px;">{{item.tname}}</div>
-                        <div style="font-size:small; color:#666;margin-bottom: 5px;">{{item.availableDate}} | 已售:{{item.sold}}</div>
-                        <div>{{item.message}}</div>
+                        <div style="font-size:small; color:#666;margin-bottom: 5px;">{{item.beginDate}} -- {{item.endDate}}</div>
                       </div>
                       <div class="ticket-right">
                         <div style="display:flex; flex-direction: row; align-items:center">
@@ -74,14 +73,23 @@
                       </div>
                     </div>
                   </el-tab-pane>
-                  <el-tab-pane label="评价问答" name="second">
-                    <div>
-                      <div>
-                        
-                      </div>
+                  <el-tab-pane label="景点信息" name="second">
+                    <div class="name">
+                      {{information.name}}
+                    </div>
+                    <div class="location">
+                      <span>{{information.address}}</span><br/>
+                      <span>{{information.proName}} {{information.cityName}} {{information.areaName}}</span>
+                    </div>
+                    <div class="content">
+                      <span>景点介绍：</span>
+                      <span>{{information.content}}</span>
+                      <span>开放时间：</span>
+                      <span>{{information.opentime}}</span>
+                      <span>注意：</span>
+                      <span>{{information.attention}}</span>
                     </div>
                   </el-tab-pane>
-                  <el-tab-pane label="搜索周边" name="third">搜索周边</el-tab-pane>
                 </el-tabs> 
               </el-card>
             </el-col>        
@@ -106,46 +114,14 @@
       },
       data() {
         return {
-          ticket:[
-            {
-              tname:'儿童票',
-              availableDate:'可订今日',
-              sold:'90000',
-              message:'21:30前可订',
-              originalPrice:'138',
-              discountPrice:'48'
-            },
-            {
-              tname:'学生票',
-              availableDate:'可订今日',
-              sold:'100000',
-              message:'21:30前可订',
-              originalPrice:'168',
-              discountPrice:'68'
-            },
-            {
-              tname:'学生票',
-              availableDate:'可订今日',
-              sold:'100000',
-              message:'21:30前可订',
-              originalPrice:'168',
-              discountPrice:'68'
-            },
-            {
-              tname:'学生票',
-              availableDate:'可订今日',
-              sold:'100000',
-              message:'21:30前可订',
-              originalPrice:'168',
-              discountPrice:'68'
-            }
-          ],
+          tickets:[],
           activeName:'first',
           input:'',
           city: [],
           options: [],
           recommendation:[],
-          travelNews:[]
+          travelNews:[],
+          information:[]
           }
       },
       created() {
@@ -276,27 +252,48 @@
                 rname=r.data.contentlist[i].name;
                 addr=r.data.contentlist[i].address;
                 summary=r.data.contentlist[i].summary;
-                picture=r.data.contentlist[i].picList[0].picUrl;
+                if(r.data.contentlist[i].picList.length===0){
+                  picture=''
+                }
+                else{
+                  picture=r.data.contentlist[i].picList[0].picUrl;
+                }
                 this.recommendation.push({name:rname,location:addr,comment:summary,pic:picture})
+              }
+              this.information.name=r.data.contentlist[0].name;
+              this.information.address=r.data.contentlist[0].address;
+              this.information.areaName=r.data.contentlist[0].areaName;
+              this.information.cityName=r.data.contentlist[0].cityName;
+              this.information.proName=r.data.contentlist[0].proName;
+              this.information.content=r.data.contentlist[0].content;
+              this.information.opentime=r.data.contentlist[0].opentime;
+              this.information.attention=r.data.contentlist[0].attention;
+              var ticket=r.data.contentlist[0].pricelist;
+              var origin,discount,begin,end,name;
+              for(var i=0;i<ticket.length;i++){
+                name=ticket[i].TicketName;
+                origin=ticket[i].Amount;
+                discount=ticket[i].AmountAdvice;
+                begin=ticket[i].BeginDate;
+                end=ticket[i].EndDate;
+                this.tickets.push({tname:name,originalPrice:origin,discountPrice:discount,beginDate:begin,endDate:end})
               }
             }
           }).catch((err) => {
           console.log(err);
           });
         },
-        news(){
-          console.log("当前输入")
-          console.log(this.input)
-          getNews(10,this.input).then((r)=>{
+        news(data){
+          getNews(10,data).then((r)=>{
             if(r.code===200){
               console.log(r.result.allnum)
               var title,description,time,picture;
               for(var i=0;i<r.result.allnum;i++){
-                title=r.result.list[i].title;
-                description=r.result.list[i].description;
-                time=r.result.list[i].ctime;
-                picture=r.result.list[i].picUrl;
-                this.travelNews.push({name:title,pic:picture,comment:description,location:time})
+                title=r.result.newslist[i].title;
+                description=r.result.newslist[i].description;
+                time=r.result.newslist[i].ctime;
+                picture=r.result.newslist[i].picUrl;
+                this.travelNews.push({name:title,comment:description,location:time})
               }
             }
           }).catch((err) => {
@@ -304,7 +301,17 @@
           });
         },
         search(){
-          this.news();
+          var data=''
+          if(this.city[1]==="市辖区")
+          {
+            data=this.city[0];
+            data=data.substring(0,data.lastIndexOf("市"))
+          }
+          else{
+            data=this.city[1];
+            data=data.substring(0,data.lastIndexOf("市"))
+          }
+          this.news(data);
           //this.recommend()
         }
        
