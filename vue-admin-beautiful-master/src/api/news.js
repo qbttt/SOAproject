@@ -1,4 +1,4 @@
-import service from '@/utils/travleNews.js'
+import service from '@/utils/travelNews.js'
 
 export function getNews(n,data){
     return service({
