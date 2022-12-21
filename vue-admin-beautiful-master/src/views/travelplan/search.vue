@@ -267,7 +267,7 @@
           console.log(tab,event)
         },
         recommend(){
-          getRecommend(this.city,10,input).then((r)=>{
+          getRecommend(this.city,10,this.input).then((r)=>{
             if(r.code===200){
               var rname,addr,summary,picture;
               for(var i=0;i<r.data.count;i++){
