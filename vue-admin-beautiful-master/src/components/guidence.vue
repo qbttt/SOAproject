@@ -2,15 +2,11 @@
     <el-card :body-style="{padding:'0px'}">
         <img :src="image" class="image">
         <div style="padding:14px">
-            <span>{{title}}</span>
+            <a :href="link">{{title}}</a>
             <div class="bottom clearfix">
                 <span>{{publishtime}}</span>
             </div>
-            <el-badge :value="comments" :max="99" class="item">
-                <el-button size="mini" icon="el-icon-star-off">收藏</el-button>
-                <el-button size="mini" icon="el-icon-share"></el-button>
-                <el-button size="mini" icon="el-icon-chat-line-round">评论</el-button> 
-            </el-badge> 
+            
             
         </div>
 
@@ -24,7 +20,7 @@ export default{
         'image',
         'title',
         'publishtime',
-        'comments'
+        'link'
     ],
     data(){
         return {

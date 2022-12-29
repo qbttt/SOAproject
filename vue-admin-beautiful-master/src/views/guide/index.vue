@@ -14,48 +14,10 @@
                       </el-input>
                 </div>
             </el-col>
-            <el-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12">
-                <el-card shadow="always">
-                    <div slot="header">
-                        <span>发现好去处</span>
-                    </div>
-                    <vab-chart
-                      :autoresize="true"
-                      theme="vab-echarts-theme"
-                      :options="cy"
-                      @zr:click="handleZrClick"
-                      @click="handleClick"
-                      >
-                    </vab-chart>
-                    <div class="bottom">
-                        <span>...</span>
-                    </div>
-                </el-card>
-            </el-col>
-            <el-col :xs="24" :sm="24" :md="24" :lg="12" :xl="12">
-                <el-card shadow="always">
-                    <div slot="header">
-                        <span>客流量</span>
-                    </div>
-                    <vab-chart
-                      :autoresize="true"
-                      theme="vab-echarts-theme"
-                      :options="flow"
-                      >
-                    </vab-chart>
-                    <div class="bottom">
-                        <span>...</span>
-                    </div>
-                </el-card>
-            </el-col>
             <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
                 <el-card shadow="always">
                     <div slot="header">
-                        <span> 攻略</span>
-                    </div>
-                    <div class="choice-button">
-                        <el-button @click="choice=0">全部</el-button>
-                        <el-button @click="choice=1">美食</el-button>
+                        <span>旅游新闻</span>
                     </div>
                     <div class="card-body">   
                         <el-row :gutter="10" >
@@ -65,7 +27,7 @@
                                   :image="item.picture"
                                   :title="item.title"
                                   :publishtime="item.time"
-                                  :comments="item.comments">
+                                  :link="item.link">
                             </guidence>
                             </el-col>
                           
@@ -81,6 +43,7 @@
 import VabChart from '@/plugins/echarts'
 import guidence from '@/components/guidence'
 import { getCitylist } from '../../api/citylist'
+import { getGuide } from '../../api/data'
 export default{
     components:{
         VabChart,
@@ -93,189 +56,7 @@ export default{
             city:[],
             options: [],
             cityname:'上海',
-            cy: {
-              grid: {
-                top: '4%',
-                left: '2%',
-                right: '4%',
-                bottom: '0%',
-              },
-          series: [
-            {
-              type: 'wordCloud',
-              gridSize: 20,
-              sizeRange: [10, 30],
-              rotationRange: [0, 0],
-              width: '100%',
-              height: '100%',
-              textStyle: {
-                normal: {
-                  color() {
-                    const arr = [
-                      '#1890FF',
-                      '#36CBCB',
-                      '#4ECB73',
-                      '#FBD437',
-                      '#F2637B',
-                      '#975FE5',
-                    ]
-                    let index = Math.floor(Math.random() * arr.length)
-                    return arr[index]
-                  },
-                },
-              },
-              data: [
-                {
-                  name: '上海欢乐谷',
-                  value: 1500,
-                },
-                {
-                  name: '上海海洋水族馆',
-                  value: 1081,
-                },
-
-                {
-                  name: '上海动物园',
-                  value: 650,
-                },
-                {
-                  name: '田子坊',
-                  value: 600,
-                },
-                {
-                  name: '豫园',
-                  value: 450,
-                },
-                {
-                  name: '上海自然博物馆',
-                  value: 300,
-                },
-                {
-                  name: '武康路',
-                  value: 300,
-                },
-                {
-                  name: '佘山国家森林公园',
-                  value: 500,
-                },
-                {
-                  name: '顾村公园',
-                  value: 300,
-                },
-                {
-                  name: '七宝老街',
-                  value: 200,
-                },
-                {
-                  name: '上海杜莎夫人蜡像馆',
-                  value: 180,
-                },
-                {
-                  name: '南京路步行街',
-                  value: 170,
-                },
-                {
-                  name: '静安寺',
-                  value: 160,
-                },
-                {
-                  name: '浦东美术馆',
-                  value: 1500,
-                },
-                {
-                  name: '外滩',
-                  value: 1200,
-                },
-                {
-                  name: '上海迪士尼度假区',
-                  value: 1100,
-                },
-                {
-                  name: '国家会展中心',
-                  value: 900,
-                },
-                {
-                  name: '上海海昌海洋公园',
-                  value: 800,
-                },
-                {
-                  name: '上海城隍庙',
-                  value: 700,
-                },
-                {
-                  name: '思南公馆',
-                  value: 800,
-                },
-                {
-                  name: '愚园路',
-                  value: 900,
-                },
-                {
-                  name: '静安别墅',
-                  value: 920,
-                },
-              ],
-            },
-          ],
-            },
-            list:[
-                {
-                    comments:10,
-                    picture:require('@/assets/comparison/left.jpg'),
-                    title:'上海旅游适用攻略',
-                    time:'2022/11/14 14:07'
-                },
-                {
-                    comments:18,
-                    picture:require('@/assets/comparison/left.jpg'),
-                    title:'上海必走的8条徒步路线',
-                    time:'2022/11/14 13:45'
-                },
-                {
-                    comments:130,
-                    picture:require('@/assets/comparison/left.jpg'),
-                    title:'上海踏秋|复兴岛公园',
-                    time:'2022/11/13 12:09'
-                },
-                {
-                    comments:79,
-                    picture:require('@/assets/comparison/left.jpg'),
-                    title:'上海秋日brunch',
-                    time:'2022/11/13 09:36'
-                }
-            ],
-            flow: {
-          grid: {
-            top: '4%',
-            left: '2%',
-            right: '4%',
-            bottom: '0%',
-            containLabel: true,
-          },
-          xAxis: [
-            {
-              type: 'category',
-              /*boundaryGap: false,*/
-              data: ['0时', '4时', '8时', '12时', '16时', '20时', '24时'],
-              axisTick: {
-                alignWithLabel: true,
-              },
-            },
-          ],
-          yAxis: [
-            {
-              type: 'value',
-            },
-          ],
-          series: [
-            {
-              name: '客流量',
-              type: 'bar',
-              barWidth: '60%',
-              data: [10, 52, 20, 33, 39, 33, 22],
-            },
-          ],
-        },
+            list:[]
 
         }
     },
@@ -284,6 +65,28 @@ export default{
         this.$baseMessage(`点击了${e.name},这里可以写跳转`)
       },
       handleZrClick(e) {},
+      fetchNews(){
+        var data=''
+          if(this.city[1]==="市辖区")
+          {
+            data=this.city[0];
+            data=data.substring(0,data.lastIndexOf("市"))
+          }
+          else{
+            data=this.city[1];
+            data=data.substring(0,data.lastIndexOf("市"))
+          }
+        getGuide(data).then((r)=>{
+          var name,url,img,date;
+          name=r.data.contentlist[i].title;
+          url=r.data.contentlist[i].link;
+          img=r.data.contentlist[i].img;
+          date=r.data.contentlist[i].pubDate;
+          this.list.push({picture:img,title:name,time:date,link:url})
+        }).catch((err) => {
+          console.log(err);
+        });
+      }
     },
     created(){
       getCitylist().then((r)=>{

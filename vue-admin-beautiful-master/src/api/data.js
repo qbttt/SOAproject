@@ -20,7 +20,7 @@ export function getRecommend(city,num,data){
         }
     })
 }
-export function getAccomodation(city,distri,d,data){
+export function getAccomodation(city,distri,d){
     return service({
         url:'/accomodation',
         method:'GET',
@@ -28,7 +28,7 @@ export function getAccomodation(city,distri,d,data){
             cityName:city,
             district:distri,
             date:d,
-            word:data
+            
         }
     })
 }
@@ -38,16 +38,12 @@ export function getCategory(){
         method:'GET',
     })
 }
-export function getGuide(city,distri,c,number,data){
+export function getGuide(cityname){
     return service({
         url:'/guide',
         method:'GET',
         params:{
-            cityName:city,
-            district:distri,
-            category:c,
-            num:number,
-            word:data
+            city:cityname
         }
     })
 }
